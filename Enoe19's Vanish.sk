@@ -1,0 +1,21 @@
+variables:
+	{vanish.%player%} = "False"
+
+command /.vanish:
+	description: Makes you vanish
+	usage: /.vanish
+	permission: op
+	permission message: You don't have the permission to use this command!
+	executable by: players and console
+	trigger:
+		if {vanish.%player%} is "False":
+			hide player from all players
+			send "&aYou are vanished!" to player
+			set {vanish.%player%} to "True"
+			stop
+
+		if {vanish.%player%} is "True":
+			reveal player for all players
+			send "&aYou are no longer vanished!" to player
+			set {vanish.%player%} to "False"
+			stop
